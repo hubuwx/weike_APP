@@ -1,5 +1,6 @@
 package com.chenluwei.weike.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -14,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -48,7 +50,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.GetListener;
 
-public class WelcomeActivity extends AppCompatActivity {
+public class WelcomeActivity extends Activity {
 
     private static final int CONN_SUCCESS = 1;
     private static final int CONN_FAIL = 2;
@@ -111,7 +113,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                         //切换动画
-                        overridePendingTransition( R.anim.right_in, R.anim.left_out);
+                        //overridePendingTransition( R.anim.right_in, R.anim.left_out);
                     }else {//如果为false : 1.提示创建快捷方式 2.进入主界面
                         //询问是否创建快捷方式
                         makeShortCut();
@@ -327,7 +329,7 @@ public class WelcomeActivity extends AppCompatActivity {
                         query.getObject(WelcomeActivity.this, Contants.BMOB_JSON, new GetListener<FileInfo>() {
                             @Override
                             public void onSuccess(final FileInfo fileInfo) {
-
+                                Log.e("eee", "onSuccess");
                                 new Thread(){
                                     @Override
                                     public void run() {
@@ -397,6 +399,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }.start();
         }else{
+            Log.e("eee", "连接失败");
             Toast.makeText(WelcomeActivity.this, "网络连接失败", Toast.LENGTH_SHORT).show();
             //如果没有联网，则直接进入主界面
             toMainUI();
@@ -483,4 +486,6 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onDestroy();
         handler.removeCallbacksAndMessages(null);
     }
+
+
 }

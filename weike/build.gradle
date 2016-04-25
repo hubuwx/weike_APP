@@ -25,7 +25,6 @@ dependencies {
     //Gson的jar包
     compile files('libs/gson-2.1.jar')
     //侧滑菜单拦的jar包
-    compile project(':SlidingMenu_library')
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.android.support:support-v4:23.2.1'
     compile 'com.android.support:support-v4:23.1.1'
@@ -33,12 +32,10 @@ dependencies {
     compile files('libs/okhttp-2.4.0.jar')
     compile files('libs/okio-1.4.0.jar')
     compile files('libs/Bmob_Push_V0.6beta_20150408.jar')
-
     compile 'cn.bmob.android:bmob-sms:1.0.1'
     //有炫酷效果的侧滑菜单栏的jar包
-
     compile 'com.nineoldandroids:library:2.4.0'
     compile project(':flowingdrawer-core')
-
     compile 'com.android.support:design:22.2.0'
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

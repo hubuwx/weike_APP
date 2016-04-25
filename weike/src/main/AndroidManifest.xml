@@ -19,7 +19,9 @@
         android:supportsRtl="true"
        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
 
-        <activity android:name=".activity.MainActivity"></activity>
+        <activity android:name=".activity.MainActivity"
+            android:configChanges="keyboard|screenSize|orientation"
+            ></activity>
         <activity android:name=".activity.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,6 +30,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.GuideActivity"></activity>
+        <activity android:name=".media.SystemVideoPlayer"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:screenOrientation="landscape"
+            ></activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>
