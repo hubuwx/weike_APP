@@ -3,13 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.chenluwei.weike.fragment.LeftMenuFragment"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/login_register_bg"
 
     >
     <TextView
+        android:id="@+id/downnnn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="左侧"/>
+        android:textColor="@color/white_fafaf8"
+        android:textSize="50sp"
+        android:layout_gravity="center"
+        android:text="离线"/>
 
 
 </FrameLayout>

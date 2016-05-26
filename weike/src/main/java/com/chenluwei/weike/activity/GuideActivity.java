@@ -95,7 +95,7 @@ public class GuideActivity extends Activity {
         });
 
         //监听页面的改变
-        viewpager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             //position:当前的页面下标
             //positionOffset：屏幕上移动的百分比
             //positionOffsetPixels:在屏幕上移动了多少像素

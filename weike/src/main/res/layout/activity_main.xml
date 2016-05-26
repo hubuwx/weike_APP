@@ -37,35 +37,35 @@
                    android:padding="5dp">
 
                    <RadioButton
-                       android:id="@+id/rb_video"
+                       android:id="@+id/rb_main"
                        style="@style/bottom_tag_style"
                        android:drawableTop="@drawable/rb_video_selector"
-                       android:text="本地视频"
+                       android:text="微课"
 
                        />
 
                    <RadioButton
-                       android:id="@+id/rb_audio"
+                       android:id="@+id/rb_channel"
                        style="@style/bottom_tag_style"
                        android:drawableTop="@drawable/rb_audio_selector"
-                       android:text="本地音乐" />
+                       android:text="离线" />
 
 
                    <RadioButton
-                       android:id="@+id/rb_netvideo"
+                       android:id="@+id/rb_outline"
                        style="@style/bottom_tag_style"
                        android:drawableTop="@drawable/rb_netvideo_selector"
-                       android:text="网络视频" />
-
+                       android:text="微听" />
 
                    <RadioButton
-                       android:id="@+id/rb_netaudio"
-                       style="@style/bottom_tag_style"
-                       android:drawableTop="@drawable/rb_netaudio_selector"
-                       android:text="网络音乐" />
+                   android:id="@+id/rb_mine"
+                   style="@style/bottom_tag_style"
+                   android:drawableTop="@drawable/rb_netaudio_selector"
+                   android:text="设置" />
 
 
                </RadioGroup>
+
 
            </LinearLayout>
         </android.support.design.widget.CoordinatorLayout>

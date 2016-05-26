@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_head_icon"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/head_portrait"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/iv_head_icon"
+            android:layout_marginLeft="10dp"
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:id="@+id/tv_head_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名称"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:id="@+id/tv_head_time"
+                android:text="时间"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_head_ding"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/head_ding_select"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

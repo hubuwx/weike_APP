@@ -1,18 +1,18 @@
 package com.chenluwei.weike.activity;
 
-import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.chenluwei.weike.R;
@@ -21,9 +21,11 @@ import com.chenluwei.weike.fragment.ContentFragment;
 import com.chenluwei.weike.fragment.LeftMenuFragment;
 
 import com.chenluwei.weike.pager.AudioPager;
+import com.chenluwei.weike.pager.MainPager;
 import com.chenluwei.weike.pager.NetAudioPager;
 import com.chenluwei.weike.pager.NetVideoPager;
 import com.chenluwei.weike.pager.VideoPager;
+import com.chenluwei.weike.pager.WeiboPager;
 import com.mxn.soul.flowingdrawer_core.FlowingView;
 import com.mxn.soul.flowingdrawer_core.LeftDrawerLayout;
 
@@ -38,14 +40,25 @@ public class MainActivity extends  FragmentActivity{
 
     private RadioGroup rg_main;
     private int position;
-
+    private EditText tv_serach;
     private List<BasePager> basePagers;
+    private Button rb_mine;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置主页面
         setContentView(R.layout.activity_main);
+        rb_mine = (Button)findViewById(R.id.rb_mine);
+        tv_serach = (EditText)findViewById(R.id.tv_serach);
+        tv_serach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //初始化左侧菜单栏
         LoadLeftMenu();
         //初始化底部RadioGroup
@@ -54,15 +67,23 @@ public class MainActivity extends  FragmentActivity{
 
     private void InitiaRadioGroup() {
         basePagers = new ArrayList<>();
-        basePagers.add(new AudioPager(this));
-        basePagers.add(new VideoPager(this));
+        //basePagers.add(new MainPager(this));
         basePagers.add(new NetVideoPager(this));
-        basePagers.add(new NetAudioPager(this));
+        basePagers.add(new VideoPager(this));
+        basePagers.add(new AudioPager(this));
+        //basePagers.add(new WeiboPager(this));
+       // basePagers.add(new NetAudioPager(this));
         rg_main = (RadioGroup)findViewById(R.id.rg_main);
         //设置监听
         rg_main.setOnCheckedChangeListener(new MyOnCheckedChangeListener());
+        rb_mine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mLeftDrawerLayout.openDrawer();
+            }
+        });
         //设置默认选项
-        rg_main.check(R.id.rb_video);
+        rg_main.check(R.id.rb_main);
     }
 
     //加载左侧菜单栏
@@ -90,15 +111,17 @@ public class MainActivity extends  FragmentActivity{
                default:
                    position = 0;
                    break;
-                case R.id.rb_video:
+                case R.id.rb_channel:
                     position = 1;
                     break;
-                case R.id.rb_netvideo:
+                case R.id.rb_outline:
                     position = 2;
                     break;
-                case R.id.rb_netaudio:
-                    position = 3;
-                    break;
+//                case R.id.rb_mine:
+//
+//                       mLeftDrawerLayout.openDrawer();
+//
+//                    break;
             }
 
             setFragment();
@@ -114,40 +137,11 @@ public class MainActivity extends  FragmentActivity{
         //开启事务
         FragmentTransaction ft = manager.beginTransaction();
         //替换(在这里直接new fragment)
-        ft.replace(R.id.fl_main_content,new Fragment(){
-            @Nullable
-            @Override
-            /**
-             * 初始化fragMent
-             */
-            public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-                BasePager basePager = getBasePager();
-                if(basePager.rootView!=null) {
-                    return basePager.rootView;
-                }
-                return null;
-            }
-        });
+        ft.replace(R.id.fl_main_content,new ContentFragment(basePagers,position));
         //提交
         ft.commit();
     }
 
 
-    /**
-     *
-     得到相应pager的对象，并数据初始化
-     */
-
-    private BasePager getBasePager() {
-        BasePager basePager = basePagers.get(position);
-        //注意要判断该页面是否被已经初始化过
-        if(basePager != null && !basePager.isInitData) {
-            //数据初始化
-            basePager.initData();
-            basePager.isInitData = true;
-        }
-
-        return basePager;
-    }
 
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.chenluwei.beijingnews.view.NoScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </com.chenluwei.beijingnews.view.NoScrollViewPager>
+
+    <RadioGroup
+        android:id="@+id/rg_bottom_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_tab_bg"
+        android:orientation="horizontal">
+
+        <RadioButton
+
+            android:id="@+id/rb_home"
+            style="@style/bottome_tag_style"
+            android:drawableTop="@drawable/rb_home_selector"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_newscenter"
+            style="@style/bottome_tag_style"
+            android:drawableTop="@drawable/rb_newscenter_selector"
+            android:text="新闻" />
+
+        <RadioButton
+            android:id="@+id/rb_smartservice"
+            style="@style/bottome_tag_style"
+            android:drawableTop="@drawable/rb_smartservice_selector"
+            android:text="智慧" />
+
+        <RadioButton
+            android:id="@+id/rb_govaffair"
+            style="@style/bottome_tag_style"
+            android:drawableTop="@drawable/rb_govaffair_selector"
+            android:text="政要" />
+
+        <RadioButton
+            android:id="@+id/rb_setting"
+            style="@style/bottome_tag_style"
+            android:drawableTop="@drawable/rb_setting_selector"
+            android:text="设置" />
+
+
+    </RadioGroup>
+</LinearLayout>

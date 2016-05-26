@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/base_bg">
+
+<RelativeLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
+
+<ImageView
+    android:id="@+id/iv_icon"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/animation_list"/>
+
+<TextView
+    android:id="@+id/tv_artist"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="40dip"
+    android:text="演唱者"
+    android:textColor="#ffffff"
+    android:textSize="16sp"/>
+
+<TextView
+    android:id="@+id/tv_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="60dip"
+    android:text="歌曲名称"
+    android:textColor="#ffffff"
+    android:textSize="18sp"/>
+</RelativeLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_alignParentBottom="true"
+android:orientation="vertical">
+
+<TextView
+    android:id="@+id/tv_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:layout_marginRight="10dip"
+    android:text="20:11.22"
+    android:textColor="#ffffff"
+    android:textSize="18sp"/>
+
+<SeekBar
+    android:id="@+id/audio_seekBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:max="100"
+    android:maxHeight="5dip"
+    android:minHeight="5dip"
+    android:progress="10"
+    android:progressDrawable="@drawable/music_progress_horizontal"
+    android:thumb="@drawable/seek_thumb"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <Button
+        android:layout_marginBottom="10dip"
+        android:id="@+id/btn_playmode"
+        android:background="@drawable/btn_playmode_normal_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <Button
+        android:layout_marginBottom="10dip"
+        android:id="@+id/btn_pre"
+        android:background="@drawable/btn_pre_audio_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_weight="1"
+        android:layout_marginBottom="10dip"
+        android:id="@+id/btn_play_pause"
+        android:background="@drawable/btn_pause_audio_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+     <Button
+        android:layout_weight="1"
+        android:layout_marginBottom="10dip"
+        android:id="@+id/btn_next"
+        android:background="@drawable/btn_next_audio_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_weight="1"
+        android:layout_marginBottom="10dip"
+        android:id="@+id/btn_lyric"
+        android:background="@drawable/btn_lyric_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
+
+    </RelativeLayout>

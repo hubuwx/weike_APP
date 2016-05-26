@@ -1,5 +1,6 @@
 package com.chenluwei.weike.net;
 
+import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -204,6 +205,58 @@ public class APIClient {
                 pd.setMax(conn.getContentLength());
                 is = conn.getInputStream();
                 fos = new FileOutputStream(apkFile);
+                int len;
+                byte []buff = new byte[2048];
+                while((len = is.read(buff)) != -1) {
+                    fos.write(buff,0,len);
+                    pd.incrementProgressBy(len);
+                    SystemClock.sleep(5);
+                }
+            }else {
+                throw new RuntimeException();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+
+            if(conn != null) {
+                conn.disconnect();
+            }
+            if(fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if(is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+    }
+
+    public static void downloadVideo(File videoFile,ProgressDialog pd,String videoUrl,Notification notification) throws MalformedURLException {
+        HttpURLConnection conn = null;
+        InputStream is = null;
+        FileOutputStream fos = null;
+
+        URL url = new URL(videoUrl);
+        try {
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(5000);
+            conn.connect();
+            if(conn.getResponseCode() == 200) {
+
+                pd.setMax(conn.getContentLength());
+                is = conn.getInputStream();
+                fos = new FileOutputStream(videoFile);
                 int len;
                 byte []buff = new byte[2048];
                 while((len = is.read(buff)) != -1) {
