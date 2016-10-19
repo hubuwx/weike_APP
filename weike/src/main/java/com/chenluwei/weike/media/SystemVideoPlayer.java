@@ -532,8 +532,10 @@ public class SystemVideoPlayer extends Activity implements View.OnClickListener 
         uri = getIntent().getData();//Intent.setData//通常用于文件夹，相册浏览
         //获取播放列表
         mediaItems = (ArrayList<MediaItem>) getIntent().getSerializableExtra("videolist");
+
         //获取传入的位置
         position = getIntent().getIntExtra("position",0);
+
     }
 
     /**

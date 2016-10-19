@@ -13,6 +13,7 @@ import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -30,24 +31,30 @@ import com.chenluwei.weike.base.BasePager;
 import com.chenluwei.weike.bean.DownloadFileInfo;
 import com.chenluwei.weike.bean.FileInfo;
 import com.chenluwei.weike.bean.MediaItem;
+import com.chenluwei.weike.bean.TabDetailInfo;
 import com.chenluwei.weike.db.ThreadDaoImpl;
 import com.chenluwei.weike.media.SystemVideoPlayer;
 import com.chenluwei.weike.net.APIClient;
 import com.chenluwei.weike.service.DownloadService;
+import com.chenluwei.weike.util.Contants;
 import com.chenluwei.weike.util.SpUtils;
 import com.chenluwei.weike.util.TimeUtils;
 import com.chenluwei.weike.util.Url;
 import com.chenluwei.weike.view.XListView;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.xutils.common.Callback;
+import org.xutils.common.util.DensityUtil;
 import org.xutils.http.RequestParams;
 import org.xutils.image.ImageOptions;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.File;
+import java.security.Policy;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -65,17 +72,29 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
     private FrameLayout fl_icon;
     private  ImageOptions imageOptions;
 
+    //初始化顶部轮播图相关控件
+    @ViewInject(R.id.vp_top_pager)
+    private ViewPager vp_top_pager;
+    @ViewInject(R.id.tv_title)
+    private TextView tv_title;
+    @ViewInject(R.id.ll_point_group)
+    private LinearLayout ll_point_group;
+
     private int page =0;//用来记载加载更多时json变化的后缀
     private ViewPager vp_main ;
-    private LinearLayout ll_point_group ;
+
     private ThreadDaoImpl mDao = null;
     private List imageViews = null;
-    private TextView tv_title;
+
     private int i;
     /**
      * 上一次被高亮显示的页面的下标位置
      */
     private int preSelectPosition;
+
+    private String topJson;
+    private List<TabDetailInfo.DataBean> topDatas = new ArrayList<>();
+    private ArrayList<MediaItem> topMedias = new ArrayList<>();
 
     // 图片标题集合
     private final String[] imageDescriptions = new String[4];
@@ -92,8 +111,9 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
     };
 
 
-    public NetVideoPager(Context context) {
+    public NetVideoPager(Context context, String topJson) {
         super(context);
+        this.topJson = topJson;
         //以下是从Xutils案例中复制来的设置代码
         imageOptions = new ImageOptions.Builder()
 
@@ -102,8 +122,8 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
 
                         //.setPlaceholderScaleType(ImageView.ScaleType.MATRIX)
                 .setImageScaleType(ImageView.ScaleType.FIT_XY)
-                .setLoadingDrawableId(R.drawable.vedio_default)//加载中默认显示图片
-                .setFailureDrawableId(R.drawable.vedio_default)//加载失败后默认显示图片
+                .setLoadingDrawableId(R.drawable.home_scroll_default)//加载中默认显示图片
+                .setFailureDrawableId(R.drawable.home_scroll_default)//加载失败后默认显示图片
                 .build();
     }
 
@@ -111,13 +131,16 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
     public View initView() {
         View view = View.inflate(context, R.layout.video_pager, null);
         tv_nodata = (TextView) view.findViewById(R.id.tv_nodata);
-        pb_loading = (ProgressBar) view.findViewById(R.id.pb_loading);
-       // vp_main = (ViewPager) view.findViewById(R.id.vp_main);
-        ll_point_group = (LinearLayout) view.findViewById(R.id.ll_point_group);
-        //tv_title = (TextView) view.findViewById(R.id.tv_title);
-        lv_video_pager = (XListView) view.findViewById(R.id.lv_video_pager);
-        lv_video_pager.setCacheColorHint(Color.TRANSPARENT);
 
+        pb_loading = (ProgressBar) view.findViewById(R.id.pb_loading);
+
+        lv_video_pager = (XListView) view.findViewById(R.id.lv_video_pager);
+
+        //初始化顶部轮播图的内容
+        View topnewsView = View.inflate(context, R.layout.topnews, null);
+        x.view().inject(this,topnewsView);
+        lv_video_pager.setCacheColorHint(Color.TRANSPARENT);
+        lv_video_pager.addHeaderView(topnewsView);
         //设置点击某一条的监听
        // lv_video_pager.setOnItemClickListener(new MyOnItemClickListener());
         //设置可以下拉
@@ -203,8 +226,47 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
     private void processData(String json) {
         try {
             //集合创建放到这里是为了防止本地缓存数据重复添加
-            mediaItems = new ArrayList<MediaItem>();
+          mediaItems = new ArrayList<>();
 
+
+            TabDetailInfo tabDetailInfo = new Gson().fromJson(topJson, TabDetailInfo.class);
+            //解析顶部轮播图的数据
+            topDatas =  tabDetailInfo.getData();
+
+           // 给顶部数据解析成mediam的类，以便于点击的时候传入播放器
+                for (int i = 0;i<topDatas.size();i++) {
+                    MediaItem mediaItem = new MediaItem();
+                    TabDetailInfo.DataBean dataBean = topDatas.get(i);
+                    mediaItem.setName(dataBean.getTitle());
+                    topMedias.add(mediaItem);
+                }
+////                //第二层Json
+////                String topVideoJson = Contants.LEFT_STRING+dataBean.getPlid()+Contants.right_string;
+////                RequestParams topParams = new RequestParams();
+////                x.http().get(topParams, new Callback.CommonCallback<Object>() {
+////                    @Override
+////                    public void onSuccess(Object result) {
+////
+////                    }
+////
+////                    @Override
+////                    public void onError(Throwable ex, boolean isOnCallback) {
+////
+////                    }
+////
+////                    @Override
+////                    public void onCancelled(CancelledException cex) {
+////
+////                    }
+////
+////                    @Override
+////                    public void onFinished() {
+////
+////                    }
+////                });
+//            }
+
+            //解析listview数据
             JSONObject object = new JSONObject(json);//目前的结构是：对象里套数组又套对象
             JSONArray jsonArray = object.optJSONArray("data");
             for (int i = 0;i<jsonArray.length();i++){
@@ -274,12 +336,44 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
                }
 
             }
+            pb_loading.setVisibility(View.GONE);
+            //设置轮播图改变的监听
+            vp_top_pager.setAdapter(new MyPagerAdapter());
+            vp_top_pager.addOnPageChangeListener(new MyOnPageChangeListener());
+            //开始循环切换ViewPager
+            if(internalHandler == null) {
+                internalHandler = new InternalHandler();
+            }
+            //因为会调用两次processdata，所以先把之前的移除掉
+            internalHandler.removeCallbacksAndMessages(null);
+            //重新发任务
+            internalHandler.postDelayed(new MyRunnable(), 4000);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
+    class MyRunnable implements Runnable{
 
+        @Override
+        public void run() {
+            //在任务里面发消息
+            internalHandler.sendEmptyMessage(0);
+        }
+    }
+
+    private InternalHandler internalHandler;
+    class InternalHandler extends Handler{
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            //切换到下一个页面
+            int item = (vp_top_pager.getCurrentItem()+1)%5;
+            vp_top_pager.setCurrentItem(item);
+            //循环发送任务
+            internalHandler.postDelayed(new MyRunnable(),4000);
+        }
+    }
     private void processMoreVideoData(String result, MediaItem mediaItem){
         String videoUrl = null;
         String des = null;
@@ -357,20 +451,202 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
         if (mediaItems != null && mediaItems.size() > 0) {
             //设置适配器
             Log.e("ccccc", "setAdapter---enter");
-
+//            pb_loading.setVisibility(View.GONE);
+            tv_nodata.setVisibility(View.GONE);
             //填充适配器
             lv_video_pager.setAdapter(adapter);
+            //填充顶部轮播图的适配器
+            //添加底部的点
+            addPoint();
 
-            pb_loading.setVisibility(View.GONE);
-            tv_nodata.setVisibility(View.GONE);
+
 
         } else {
             tv_nodata.setVisibility(View.VISIBLE);
-            pb_loading.setVisibility(View.GONE);
+            //pb_loading.setVisibility(View.GONE);
+        }
+    }
+    /**
+     * 上一次高亮显示的位置
+     */
+    private int preSelection;
+    private void addPoint() {
+        //先移除之前所有的点
+        ll_point_group.removeAllViews();
+        //添加顶部新闻红点
+        for (int i = 0;i<5;i++){
+            ImageView point = new ImageView(context);
+            point.setBackgroundResource(R.drawable.point_selector);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(com.chenluwei.weike.util.DensityUtil.dip2px(context, 5),com.chenluwei.weike.util.DensityUtil.dip2px(context, 5));
+            point.setLayoutParams(params);
+            if(i == 0) {
+                point.setEnabled(true);//高亮显示
+            }else {
+                point.setEnabled(false);//
+                params.leftMargin = com.chenluwei.weike.util.DensityUtil.dip2px(context, 8);
+            }
+
+            //添加到线性布局里
+            ll_point_group.addView(point);
+        }
+        //设置默认的第一个文本
+        tv_title.setText(topDatas.get(preSelection).getTitle());
+    }
+    private boolean isDraging = false;
+    class MyOnPageChangeListener implements ViewPager.OnPageChangeListener{
+
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            Log.i("TAccc","onPageScrolled");
+            if(position > topDatas.size()) {
+                return;
+            }
+            Log.i("TAccc","onPageScrolled能进来");
+            tv_title.setText(topDatas.get(preSelection).getTitle());
+            //把上一次的设置为默认
+            ll_point_group.getChildAt(preSelection).setEnabled(false);
+            //把当前的设置高亮
+          ll_point_group.getChildAt(position).setEnabled(true);
+            preSelection = position;
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            if(state == ViewPager.SCROLL_STATE_DRAGGING) {
+                //拖拽，移除消息
+                internalHandler.removeCallbacksAndMessages(null);
+                isDraging = true;
+            }else if(state == ViewPager.SCROLL_STATE_IDLE ) {
+                //静止，发送消息
+                isDraging = false;
+                internalHandler.removeCallbacksAndMessages(null);
+                internalHandler.postDelayed(new MyRunnable(),4000);
+            }else if(state == ViewPager.SCROLL_STATE_SETTLING) {
+                isDraging=false;
+                //滑动
+                internalHandler.removeCallbacksAndMessages(null);
+                internalHandler.postDelayed(new MyRunnable(),4000);
+            }
+        }
+    }
+    class MyPagerAdapter extends PagerAdapter{
+
+        @Override
+        public Object instantiateItem(ViewGroup container, final int position) {
+            ImageView imageView = new ImageView(context);
+            //设置默认图片
+            imageView.setBackgroundResource(R.drawable.home_scroll_default);
+            container.addView(imageView);
+            //获取网络图片地址
+
+            if(position < topDatas.size()) {
+
+                String imgUrl = topDatas.get(position).getPicUrl();
+                x.image().bind(imageView, imgUrl);
+            }
+//            设置触摸事件的监听
+            imageView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            //移除消息
+                            internalHandler.removeCallbacksAndMessages(null);
+                            //这里返回false是为了不消费掉，让点击监听能有响应
+                            return false;
+
+//                        当前控件(子控件，儿子)收到前驱事件(ACTION_MOVE或者ACTION_MOVE)后，
+//                         它的父控件(老爸)突然插手，截断事件的传递，这时，当前控件就会收到ACTION_CANCEL
+                        case MotionEvent.ACTION_UP:
+                            //重新发消息
+                            internalHandler.postDelayed(new MyRunnable(), 4000);
+                            break;
+                    }
+                    return false;
+                }
+            });
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Log.e("onClick", "onClick--------"+position);
+
+                    String videoJson = Contants.LEFT_STRING + topDatas.get(position).getPlid()+Contants.right_string;
+                    RequestParams params = new RequestParams(videoJson);
+                    x.http().get(params, new Callback.CommonCallback<String>() {
+
+
+                        @Override
+                        public void onSuccess(String result) {
+                            try {
+                                JSONObject jsonObject = new JSONObject(result);
+                                JSONObject videoInfo = jsonObject.optJSONObject("data").optJSONArray("videoList").optJSONObject(0);
+                                String videoUrl = (String) videoInfo.optString("mp4HdUrl");
+                                topMedias.get(position).setData(videoUrl);
+                                //传递视频列表给播放器
+                                Intent intent = new Intent(context, SystemVideoPlayer.class);
+                                //这里进行了序列化
+                                Bundle bundle = new Bundle();
+                                bundle.putSerializable("videolist", topMedias);
+                                //传播放列表
+                                intent.putExtras(bundle);
+                                //因为播放要知道是哪个视频，所以还要传一下位置(这里注意XlistView多算了一条，要减1)
+                                intent.putExtra("position", position);
+                                context.startActivity(intent);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        @Override
+                        public void onError(Throwable ex, boolean isOnCallback) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(CancelledException cex) {
+
+                        }
+
+                        @Override
+                        public void onFinished() {
+
+                        }
+                    });
+
+                }
+            });
+            return imageView;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+            //super.destroyItem(container, position, object);
+            container.removeView((View) object);
+        }
+
+        @Override
+        public int getCount() {
+            return 5;
+        }
+
+        @Override
+        public boolean isViewFromObject(View view, Object object) {
+            return view == object;
         }
     }
 
+
+
     TimeUtils timeUtils;
+
+
 
     /**
      * XListView下拉刷新时的监听
@@ -387,7 +663,7 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
      */
     @Override
     public void onLoadMore() {
-
+        Log.e("TAGaaa", "在第一个onLoadMore");
         page+=10;
 
 
@@ -600,7 +876,10 @@ public class NetVideoPager extends BasePager implements XListView.IXListViewList
                             .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-
+                                    if(mediaItem.getData() == null) {
+                                        Toast.makeText(context, "下载视频失败", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
                                     String fileName = mediaItem.getData().substring(mediaItem.getData().lastIndexOf("/") + 1);//f17.jpg
                                     mDao = new ThreadDaoImpl(context);
                                     List<Map<String, Object>> fileSimpleInfos = mDao.getFileSimpleInfo();

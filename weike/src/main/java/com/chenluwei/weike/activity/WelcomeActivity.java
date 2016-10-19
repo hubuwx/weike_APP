@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.chenluwei.weike.R;
 import com.chenluwei.weike.bean.FileInfo;
+import com.chenluwei.weike.bean.MyUser;
 import com.chenluwei.weike.bean.UpdataInfo;
 import com.chenluwei.weike.net.APIClient;
 import com.chenluwei.weike.util.Contants;
@@ -47,6 +48,7 @@ import java.net.URL;
 
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.GetListener;
 
@@ -106,18 +108,38 @@ public class WelcomeActivity extends Activity {
 
                 //进入主界面
                 case TO_MAIN_UI:
+                    Log.e("TAG", "进入tomain");
                     //判断是否要直接进入主界面
                     boolean isEnterMain = SpUtils.getInstance(WelcomeActivity.this).getBoolean(SpUtils.ENTERMAIN,false);
                     if(isEnterMain) {//如果为true，进入主界面
-                        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        //判断是否进入注册界面
+                        Log.e("TAG", "进入isEnterMain");
+
+                        MyUser user = BmobUser.getCurrentUser(WelcomeActivity.this,MyUser.class);
+
+                        if(user!= null) {
+
+                            //如果已经有缓存，则直接进入主界面
+                            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                            intent.putExtra("user",user);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            //Log.e("TAG", "3333333" + user.toString());
+                            Intent intent = new Intent(WelcomeActivity.this, LoadActivity.class);
+                            //intent.putExtra("user",user);
+                            startActivity(intent);
+                            finish();
+                        }
+
                         //切换动画
                         //overridePendingTransition( R.anim.right_in, R.anim.left_out);
                     }else {//如果为false : 1.提示创建快捷方式 2.进入主界面
                         //询问是否创建快捷方式
-                        makeShortCut();
+                        //SpUtils.getInstance(WelcomeActivity.this).getBoolean(SpUtils.ENTERMAIN,false);
+                        SpUtils.getInstance(WelcomeActivity.this).save(SpUtils.ENTERMAIN,true);
 
+                        makeShortCut();
                     }
 
                     break;
@@ -128,11 +150,14 @@ public class WelcomeActivity extends Activity {
     private UpdataInfo updataInfo;
 
     private void loadGuide() {
+
+
+
         Intent intent = new Intent(WelcomeActivity.this, GuideActivity.class);
         startActivity(intent);
         finish();
         //切换动画
-        overridePendingTransition( R.anim.right_in, R.anim.left_out);
+        //overridePendingTransition( R.anim.right_in, R.anim.left_out);
     }
 
     //创建快捷方式
@@ -156,14 +181,14 @@ public class WelcomeActivity extends Activity {
                         //发送这个广播
                         sendBroadcast(intent);
 
-                        //进入主界面
+                        //进入引导界面
                         loadGuide();
                     }
                 })
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //进入主界面
+                        //进入引导
                         loadGuide();
                     }
                 })
@@ -265,9 +290,7 @@ public class WelcomeActivity extends Activity {
 
         setContentView(R.layout.activity_welcome);
 
-        // 初始化 Bmob SDK
-        // 第二个参数Application ID是我在Bmob服务器端创建的Application ID
-        Bmob.initialize(this, Contants.BMOBID);
+
 
         //获取一下进入该界面的开始时间，以便延时
         mCt = System.currentTimeMillis();

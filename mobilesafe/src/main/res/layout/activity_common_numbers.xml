@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#BDEFFF"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="常用号码查询"
+        android:textSize="30sp"/>
+
+    <ExpandableListView
+        android:id="@+id/elv_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/white"
+        android:groupIndicator="@drawable/group_indicator_selector"
+        />
+</LinearLayout>

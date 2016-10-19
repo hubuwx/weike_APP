@@ -43,6 +43,7 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/iv_share"
         android:layout_marginRight="8dp"
         android:src="@drawable/ic_topbanner_record"
         android:layout_width="wrap_content"

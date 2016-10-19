@@ -9,4 +9,8 @@ public class Url {
      * 新闻中心的联网链接
      */
     public static final String NEWCENTER_URL=BASE_URL+"/categories.json";
+    /**
+     * 图组的json连接
+     */
+    public static final String PHOTOS_URL=BASE_URL+"/photos/photos_1.json";
 }

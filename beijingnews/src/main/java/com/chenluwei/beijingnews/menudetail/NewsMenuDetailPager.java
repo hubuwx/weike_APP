@@ -39,7 +39,7 @@ public class NewsMenuDetailPager extends MenuDetailBasePager {
      */
     private List<NewsCenterBean2.NewsCenterData.ChrildrenData> childrenDatas;
     /**
-     * 左侧菜单对应新闻详情页面的集合
+     * 新闻详情页面的集合
      */
     private ArrayList<MenuDetailBasePager> detailBasePagers;
 

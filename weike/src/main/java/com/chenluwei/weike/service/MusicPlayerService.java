@@ -359,7 +359,7 @@ public class MusicPlayerService extends Service{
             }
 
         }else if(playmode == REPEAT_SINGLE) {
-
+            //单曲循环
            openAudio(position);
         }else if(playmode == REPEAT_ALL) {
             openAudio(position);
@@ -524,7 +524,7 @@ public class MusicPlayerService extends Service{
      * @return
      */
     private int getPlayMode(){
-        return 0;
+        return playmode;
     }
 
     public int getCurrentPosition(){

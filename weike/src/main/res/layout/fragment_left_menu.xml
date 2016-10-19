@@ -1,19 +1,60 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.chenluwei.weike.fragment.LeftMenuFragment"
     android:background="@drawable/login_register_bg"
 
     >
+
+    <TextView
+        android:id="@+id/tv_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_fafaf8"
+        android:textSize="30sp"
+        android:gravity="center_horizontal"
+        android:text="欢迎您"/>
+
     <TextView
         android:id="@+id/downnnn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white_fafaf8"
         android:textSize="50sp"
-        android:layout_gravity="center"
-        android:text="离线"/>
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="下载"/>
 
+       <TextView
 
-</FrameLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_fafaf8"
+        android:textSize="50sp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="收藏"/>
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_fafaf8"
+        android:textSize="50sp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="个人"/>
+
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white_fafaf8"
+        android:textSize="50sp"
+        android:layout_marginTop="50dp"
+        android:gravity="center_horizontal"
+        android:text="退出"/>
+
+</LinearLayout>

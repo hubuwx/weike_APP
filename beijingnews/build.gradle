@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
+    //compile 'com.android.support:appcompat-v7:22.2.1'
     compile project(':SlidingMenu_library')
     compile project(':xutils')
     compile files('libs/gson-2.1.jar')
@@ -31,4 +31,5 @@ dependencies {
     compile project(':RefreshListView_lib')
     compile project(':library')
     compile files('libs/volley.jar')
+    compile 'com.android.support:design:22.2.1'
 }

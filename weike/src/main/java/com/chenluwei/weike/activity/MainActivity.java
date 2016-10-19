@@ -17,6 +17,7 @@ import android.widget.RadioGroup;
 
 import com.chenluwei.weike.R;
 import com.chenluwei.weike.base.BasePager;
+import com.chenluwei.weike.bean.MyUser;
 import com.chenluwei.weike.fragment.ContentFragment;
 import com.chenluwei.weike.fragment.LeftMenuFragment;
 
@@ -29,6 +30,7 @@ import com.chenluwei.weike.pager.WeiboPager;
 import com.mxn.soul.flowingdrawer_core.FlowingView;
 import com.mxn.soul.flowingdrawer_core.LeftDrawerLayout;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,8 @@ public class MainActivity extends  FragmentActivity{
         super.onCreate(savedInstanceState);
         //设置主页面
         setContentView(R.layout.activity_main);
+        //获取到用户信息
+        getUserInfo();
         rb_mine = (Button)findViewById(R.id.rb_mine);
         tv_serach = (EditText)findViewById(R.id.tv_serach);
         tv_serach.setOnClickListener(new View.OnClickListener() {
@@ -65,10 +69,19 @@ public class MainActivity extends  FragmentActivity{
         InitiaRadioGroup();
     }
 
+    /**
+     * 获取到用户信息
+     */
+    public MyUser getUserInfo() {
+        MyUser user = (MyUser) getIntent().getSerializableExtra("user");
+        return user;
+
+    }
+
     private void InitiaRadioGroup() {
         basePagers = new ArrayList<>();
-        //basePagers.add(new MainPager(this));
-        basePagers.add(new NetVideoPager(this));
+        basePagers.add(new MainPager(this));
+        //basePagers.add(new NetVideoPager(this));
         basePagers.add(new VideoPager(this));
         basePagers.add(new AudioPager(this));
         //basePagers.add(new WeiboPager(this));
@@ -89,7 +102,6 @@ public class MainActivity extends  FragmentActivity{
     //加载左侧菜单栏
     private void LoadLeftMenu() {
         mLeftDrawerLayout = (LeftDrawerLayout)findViewById(R.id.leftDrawerLayout);
-
         FragmentManager fm = getSupportFragmentManager();
         mMenuFragment = (LeftMenuFragment) fm.findFragmentById(R.id.id_container_menu);
         mFlowingView = (FlowingView) findViewById(R.id.sv);
@@ -97,7 +109,7 @@ public class MainActivity extends  FragmentActivity{
         if (mMenuFragment == null) {
             //填充自己的fragment
             //其本质还是动态加载Fragment
-            fm.beginTransaction().add(R.id.id_container_menu, mMenuFragment = new LeftMenuFragment()).commit();
+            fm.beginTransaction().add(R.id.id_container_menu, mMenuFragment = new LeftMenuFragment(this)).commit();
         }
         mLeftDrawerLayout.setFluidView(mFlowingView);
         mLeftDrawerLayout.setMenuFragment(mMenuFragment);

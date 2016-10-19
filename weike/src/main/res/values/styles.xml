@@ -6,7 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowNoTitle">true</item><!-- 没有标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 没有标题 -->
     </style>
 
     <style name="bottom_tag_style">
@@ -21,4 +22,109 @@
         <item name="android:textSize">10sp</item>
     </style>
 
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Register_Input">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/base_edit_input</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_action_bar_height</item>
+        <item name="android:layout_marginTop">@dimen/register_margin</item>
+        <item name="android:layout_marginLeft">@dimen/register_margin</item>
+        <item name="android:layout_marginRight">@dimen/register_margin</item>
+    </style>
+
+    <style name="Register_Edit">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:layout_marginLeft">@dimen/register_margin</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+    <style name="Smile">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Smile.TextView">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Smile.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/base_action_bar_height</item>
+    </style>
+
+    <style name="Smile.View_margin">
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="Smile.ImageView">
+        <item name="android:contentDescription">@string/app_name</item>
+    </style>
+
+    <style name="Smile.ImageView.Photo_Large">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="Smile.ImageView.Photo_Middle">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="Smile.ImageView.Photo_Small">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+
+    <style name="Smile.Button.theme" parent="Smile.TextView._White">
+        <item name="android:background">@drawable/btn_login_selector</item>
+    </style>
+
+    <style name="Smile.Button.logout" parent="Smile.TextView._White">
+        <item name="android:background">@drawable/btn_logout_selector</item>
+    </style>
+
+    <style name="Smile.TextView._Orange">
+        <item name="android:textColor">@color/dialog_color_title</item>
+    </style>
+
+    <style name="Smile.TextView._White">
+        <item name="android:textColor">@color/base_color_text_white</item>
+    </style>
+
+    <style name="Smile.TextView._Gray">
+        <item name="android:textColor">@color/base_color_text_gray</item>
+    </style>
+
+    <style name="Smile.TextView._Black">
+        <item name="android:textColor">@color/base_color_text_black</item>
+    </style>
+
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+
+        <item name="tabMaxWidth">100dp</item>
+        <item name="tabMinWidth">72dp</item>
+        <item name="tabIndicatorColor">#0000ff</item>
+        <item name="tabIndicatorHeight">3dp</item>
+
+
+        <item name="tabPaddingStart">8dp</item>
+        <item name="tabPaddingEnd">8dp</item>
+        <item name="tabBackground">@android:color/white</item>
+        <item name="tabTextAppearance">@style/MyCustomTabTextAppearance</item>
+       <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
+
+
+    <style name="MyCustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

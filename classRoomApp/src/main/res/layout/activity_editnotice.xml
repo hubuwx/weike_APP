@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_top_title" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dip" >
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:hint="输入资料标题"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/etTypeName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:hint="输入资料类型"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/etBody"
+            android:layout_width="fill_parent"
+            android:layout_height="120dip"
+            android:layout_marginTop="5dip"
+            android:gravity="left|top"
+            android:hint="输入资料详情"
+            android:inputType="textMultiLine"
+            android:padding="8dip"
+            android:singleLine="false" />
+    </LinearLayout>
+
+</LinearLayout>

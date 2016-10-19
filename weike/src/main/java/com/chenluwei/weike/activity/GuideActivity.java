@@ -17,9 +17,12 @@ import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 
 import com.chenluwei.weike.R;
+import com.chenluwei.weike.bean.MyUser;
 import com.chenluwei.weike.util.SpUtils;
 
 import java.util.ArrayList;
+
+import cn.bmob.v3.BmobUser;
 
 public class GuideActivity extends Activity {
     private  ViewPager viewpager;
@@ -133,10 +136,22 @@ public class GuideActivity extends Activity {
     //点击按钮进入主界面
     public void toMain(View v) {
           //进入主页面
-            Intent intent = new Intent(this, MainActivity.class);
+        MyUser user = BmobUser.getCurrentUser(GuideActivity.this, MyUser.class);
+
+        if(user!= null) {
+
+            //如果已经有缓存，则直接进入主界面
+            Intent intent = new Intent(GuideActivity.this, MainActivity.class);
+            intent.putExtra("user",user);
             startActivity(intent);
-          //sp存储引导标示(为了使创建快捷方式和进入引导界面只执行一次)
-        SpUtils.getInstance(this).save(SpUtils.ENTERMAIN,true);
+            finish();
+        }else {
+            //Log.e("TAG", "3333333" + user.toString());
+            Intent intent = new Intent(GuideActivity.this, LoadActivity.class);
+            //intent.putExtra("user",user);
+            startActivity(intent);
+            finish();
+        }
           //关闭当前页面
             finish();
     }

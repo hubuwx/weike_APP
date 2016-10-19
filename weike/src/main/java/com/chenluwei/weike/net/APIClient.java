@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -189,7 +190,7 @@ public class APIClient {
 
     //联网下载最新版本的工具方法
     //***使用Bmob需要使用另外的方法***有待完成
-    public static void download(File apkFile,ProgressDialog pd,String apkUrl) throws MalformedURLException {
+    public static void                      download(File apkFile,ProgressDialog pd,String apkUrl) throws MalformedURLException {
         HttpURLConnection conn = null;
         InputStream is = null;
         FileOutputStream fos = null;
@@ -291,4 +292,6 @@ public class APIClient {
 
 
     }
+
+    
 }

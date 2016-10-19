@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Environment;
 
+import com.chenluwei.weike.util.Contants;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
@@ -22,6 +23,8 @@ import org.xutils.x;
 
 import java.io.File;
 
+import cn.bmob.v3.Bmob;
+
 /**
  * Created by lw on 2016/4/27.
  */
@@ -30,6 +33,9 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        // 初始化 Bmob SDK
+        // 第二个参数Application ID是我在Bmob服务器端创建的Application ID
+        Bmob.initialize(this, Contants.BMOBID);
         x.Ext.init(this);
         x.Ext.setDebug(true);
         application = this;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
+        android:background="#E0FFFF"
+        android:gravity="center"
+        android:text="流量管理"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_traffic_2g_3g"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="8dip"
+            android:text="2G/3G流量: 5MB" />
+
+        <TextView
+            android:id="@+id/tv_traffic_wifi"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="8dip"
+            android:text="WIFI流量: 5MB" />
+    </LinearLayout>
+
+    <SlidingDrawer
+        android:id="@+id/sd_traffic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:content="@+id/lv_traffic"
+        android:handle="@+id/bt_traffic">
+
+        <ListView
+            android:id="@+id/lv_traffic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            ></ListView>
+
+        <Button
+            android:id="@+id/bt_traffic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/handle" />
+    </SlidingDrawer>
+
+
+</LinearLayout>

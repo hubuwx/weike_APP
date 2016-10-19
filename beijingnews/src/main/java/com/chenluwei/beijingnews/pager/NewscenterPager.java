@@ -274,5 +274,19 @@ public class NewscenterPager extends BasePager {
         menuDetailBasePager.initData();
         fl_base_content.removeAllViews();
         fl_base_content.addView(rootView);
+
+        if(selectPosition == 2) {
+            //图组
+        ib_switch_list_grid.setVisibility(View.VISIBLE);
+        ib_switch_list_grid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PhotosMenuDetailPager pager = (PhotosMenuDetailPager) menuDetailBasePagers.get(2);
+                pager.switchListAndGrid(ib_switch_list_grid);
+            }
+        });
+        }else {
+            ib_switch_list_grid.setVisibility(View.GONE);
+        }
     }
 }

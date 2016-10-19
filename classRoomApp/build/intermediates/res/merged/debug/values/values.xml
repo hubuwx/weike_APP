@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="brt">#f06b2a</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="gray1">#F2F2F2</color>
+    <color name="gray10">#808080</color>
+    <color name="gray11">#737373</color>
+    <color name="gray12">#666666</color>
+    <color name="gray13">#595959</color>
+    <color name="gray14">#4D4D4D</color>
+    <color name="gray15">#404040</color>
+    <color name="gray16">#333333</color>
+    <color name="gray17">#262626</color>
+    <color name="gray18">#1A1A1A</color>
+    <color name="gray19">#0D0D0D</color>
+    <color name="gray2">#E6E6E6</color>
+    <color name="gray20">#000000</color>
+    <color name="gray3">#D9D9D9</color>
+    <color name="gray4">#CCCCCC</color>
+    <color name="gray5">#BFBFBF</color>
+    <color name="gray6">#B3B3B3</color>
+    <color name="gray7">#A6A6A6</color>
+    <color name="gray8">#999999</color>
+    <color name="gray9">#8C8C8C</color>
+    <color name="green1">#E5FFE5</color>
+    <color name="green10">#00FF00</color>
+    <color name="green11">#00E600</color>
+    <color name="green12">#00CC00</color>
+    <color name="green13">#00B300</color>
+    <color name="green14">#009900</color>
+    <color name="green15">#008000</color>
+    <color name="green16">#006600</color>
+    <color name="green17">#004D00</color>
+    <color name="green18">#003300</color>
+    <color name="green2">#CCFFCC</color>
+    <color name="green3">#B3FFB3</color>
+    <color name="green4">#99FF99</color>
+    <color name="green5">#80FF80</color>
+    <color name="green6">#66FF66</color>
+    <color name="green7">#4DFF4D</color>
+    <color name="green8">#33FF33</color>
+    <color name="green9">#1AFF1A</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="map_route">#0099FF</color>
+    <color name="no_sel">#ff7b0e</color>
+    <color name="picbule">#04aeda</color>
+    <color name="picgreen">#009f3c</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="red">#ff0000</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="sel">#e26600</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="skyblue1">#EDF8FD</color>
+    <color name="skyblue10">#22A9E2</color>
+    <color name="skyblue11">#1B99D0</color>
+    <color name="skyblue12">#1889B9</color>
+    <color name="skyblue13">#1578A2</color>
+    <color name="skyblue14">#12678C</color>
+    <color name="skyblue15">#0F5775</color>
+    <color name="skyblue16">#0C465F</color>
+    <color name="skyblue17">#093649</color>
+    <color name="skyblue18">#062532</color>
+    <color name="skyblue19">#03141B</color>
+    <color name="skyblue2">#D6EFFA</color>
+    <color name="skyblue3">#BFE6F7</color>
+    <color name="skyblue4">#A9DEF4</color>
+    <color name="skyblue5">#93D5F1</color>
+    <color name="skyblue6">#7CCCEE</color>
+    <color name="skyblue7">#66C3EB</color>
+    <color name="skyblue8">#4FBAE8</color>
+    <color name="skyblue9">#38B1E5</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="white">#ffffff</color>
+    <dimen name="bottom_tab_font_size">12.0dip</dimen>
+    <dimen name="bottom_tab_padding_drawable">2.0dip</dimen>
+    <dimen name="bottom_tab_padding_up">10.0dip</dimen>
+    <dimen name="button_height">45.0dip</dimen>
+    <dimen name="desktop_margin">4dip</dimen>
+    <dimen name="new_blog_size">70.0dip</dimen>
+    <dimen name="sta_height">48.0dip</dimen>
+    <dimen name="switch_logo_bottom_padding">30.0sp</dimen>
+    <dimen name="title_button_font_size">16sp</dimen>
+    <dimen name="title_font_size">22sp</dimen>
+    <dimen name="title_height">74.0dip</dimen>
+    <dimen name="top_title_height">50dip</dimen>
+    <dimen name="widget_content_margin_left">10.0dip</dimen>
+    <dimen name="widget_content_margin_top">20.0dip</dimen>
+    <dimen name="widget_height">100.0dip</dimen>
+    <dimen name="widget_logo_size">35.0dip</dimen>
+    <dimen name="widget_write_margin_left">10.0dip</dimen>
+    <dimen name="widget_write_margin_top">19.0dip</dimen>
+    <item name="auto_focus" type="id"/>
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="encode_failed" type="id"/>
+    <item name="encode_succeeded" type="id"/>
+    <item name="launch_product_query" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+    <item name="search_book_contents_failed" type="id"/>
+    <item name="search_book_contents_succeeded" type="id"/>
+    <item name="tag_first" type="id"/>
+    <item name="tag_second" type="id"/>
+    <string name="app_name">教学辅助</string>
+    <string name="app_version">For Android(v1.0)</string>
+    <string name="back">返回</string>
+    <string name="cancel">取消</string>
+    <string name="next">下一步</string>
+    <string name="no">否</string>
+    <string name="ok">确定</string>
+    <string name="yes">是</string>
+    <style name="botBtnStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:paddingTop">12.0dip</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:lineSpacingExtra">15.0dip</item>
+    </style>
+    <style name="button_comm">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_width">80dip</item>
+        <item name="android:layout_height">42dip</item>
+    </style>
+    <style name="desktop_metro11">
+        <item name="android:layout_width">75dip</item>
+        <item name="android:layout_height">75dip</item>
+    </style>
+    <style name="desktop_metro22">
+        <item name="android:layout_width">154dip</item>
+        <item name="android:layout_height">154dip</item>
+    </style>
+    <style name="desktop_metro41">
+        <item name="android:layout_width">312dip</item>
+        <item name="android:layout_height">100dip</item>
+    </style>
+    <style name="desktop_metro_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_marginRight">5dip</item>
+        <item name="android:layout_marginBottom">3dip</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+    <style name="dialogactivity" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_activity_shape</item>
+    </style>
+    <style name="main_tab_bottom">
+        <item name="android:textSize">@dimen/bottom_tab_font_size</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+      
+        <item name="android:paddingTop">@dimen/bottom_tab_padding_up</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">@dimen/bottom_tab_padding_drawable</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>
+    <style name="titleStyle">
+        <item name="android:height">50dip</item>
+    </style>
+    <style name="title_font">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

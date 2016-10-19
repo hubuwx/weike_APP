@@ -26,6 +26,8 @@ import com.chenluwei.weike.R;
 import com.chenluwei.weike.service.MusicPlayerService;
 import com.chenluwei.weike.util.TimeUtils;
 
+import org.xutils.common.util.LogUtil;
+
 public class AudioPlayerActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int PROGRESS = 1;
     private ImageView ivIcon;
@@ -168,8 +170,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private void setPlayMode() {
         try {
             int playmode = service.getPlayMode();
+            LogUtil.e(playmode + "aaaaa");
             if((playmode == MusicPlayerService.REPEAT_NORMAL)) {
                 playmode = MusicPlayerService.REPEAT_SINGLE;
+                LogUtil.e(playmode + "bbb");
             }else if(playmode == MusicPlayerService.REPEAT_SINGLE) {
                 playmode = MusicPlayerService.REPEAT_ALL;
             }else if(playmode == MusicPlayerService.REPEAT_ALL) {
@@ -177,10 +181,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
             }else {
                 playmode = MusicPlayerService.REPEAT_NORMAL;
             }
-
-            //保存到service中
             service.setPlayMode(playmode);
             showPlayMode();
+            LogUtil.e(playmode + "ccccc");
+            //保存到service中
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -189,6 +193,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private void showPlayMode() {
         try {
             int playmode = service.getPlayMode();
+            LogUtil.e(playmode+"============");
             if((playmode == MusicPlayerService.REPEAT_NORMAL)) {
                 btnPlaymode.setBackgroundResource(R.drawable.btn_playmode_normal_selector);
             }else if(playmode == MusicPlayerService.REPEAT_SINGLE) {

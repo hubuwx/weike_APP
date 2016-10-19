@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="登  录"
+        android:padding="5dp"
+        android:textSize="30dp"
+        android:background="#00eeee"
+        android:gravity="center"/>
+
+
+    <EditText
+        android:id="@+id/et_login_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="再次输入密码"
+        android:textSize="18dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_login_confim"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:background="@drawable/bt_selctor_bg"
+            android:text="确定"/>
+        <Button
+            android:id="@+id/bt_login_cancel"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/bt_selctor_bg"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="取消"/>
+
+    </LinearLayout>
+</LinearLayout>

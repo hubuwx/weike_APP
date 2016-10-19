@@ -1,0 +1,7 @@
+include ':mobilesafe', ':myms', ':SlidingMenu_library', ':llistView_CommonAdapter', ':flowingdrawer-core', ':ms', ':beijingnews', ':RefreshListView_lib', 'mobilplayer', ':app22', ':xUtils3_sample', ':vitamio', ':xutils', ':xListView', ':jcvideoplayer-lib', ':weike', ':library'
+
+
+
+include ':viewPagerIndincator_library'
+include ':classRoomApp'
+include ':bmobIM_SDK'

@@ -1,0 +1,43 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+     <android.support.v4.view.ViewPager
+         android:id="@+id/viewpager"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"/>
+
+     <Button
+         android:visibility="gone"
+         android:id="@+id/btn_start_main"
+         android:text="开始体验"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:layout_marginBottom="80dp"
+         android:paddingLeft="20dip"
+         android:paddingRight="20dip"
+         />
+     
+       <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" >
+
+        <LinearLayout
+            android:id="@+id/ll_point_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <View
+            android:id="@+id/red_point"
+            android:layout_width="10dip"
+            android:layout_height="10dip" />
+    </RelativeLayout>
+
+</RelativeLayout>

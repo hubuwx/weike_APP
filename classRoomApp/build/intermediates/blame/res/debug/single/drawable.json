@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\spinner_bg.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\spinner_bg.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\point_red.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\point_red.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\checkbox_selector1.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\checkbox_selector1.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\btn_comm_selector.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\btn_comm_selector.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\point_normal.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\point_normal.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\listview_item_selector.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\listview_item_selector.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\checkbox_selector.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\checkbox_selector.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\linearborder.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\linearborder.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\drawable\\dialog_activity_shape.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\drawable\\dialog_activity_shape.xml"
+    }
+]

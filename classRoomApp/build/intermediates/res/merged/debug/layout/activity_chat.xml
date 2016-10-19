@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <include layout="@layout/layout_top_title" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="5dip" >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="80dip"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/btn_comm_selector"
+                android:text="发送" android:padding="5dip"
+                android:textColor="@color/white"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dip"
+                android:layout_toLeftOf="@id/button1"
+                android:gravity="left|top"
+                android:inputType="textMultiLine"
+                android:maxLines="2"
+                android:padding="5dip"
+                android:singleLine="false" />
+        </RelativeLayout>
+
+        <ListView
+            android:id="@+id/listview1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/rl"
+            android:cacheColorHint="@color/transparent"
+            android:divider="@color/gray1"
+            android:dividerHeight="1px"
+            android:focusable="true" >
+        </ListView>
+    </RelativeLayout>
+
+</LinearLayout>

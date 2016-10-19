@@ -9,68 +9,74 @@
         android:clipChildren="false"
         >
 
-        <!--content-->
-        <android.support.design.widget.CoordinatorLayout
-            android:id="@+id/content"
+    <!--content-->
+
+    <!--content-->
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="vertical"
-               >
-               <include layout="@layout/titlebar"/>
+            android:orientation="vertical"
+            >
+            <include layout="@layout/titlebar"/>
 
-               <FrameLayout
-                   android:id="@+id/fl_main_content"
-                   android:layout_width="match_parent"
-                   android:layout_height="0dp"
-                   android:layout_weight="1" />
+            <FrameLayout
+                android:id="@+id/fl_main_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
 
-               <RadioGroup
-                   android:id="@+id/rg_main"
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:background="#33000000"
-                   android:orientation="horizontal"
-                   android:padding="5dp">
+            <RadioGroup
+                android:id="@+id/rg_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#33000000"
+                android:orientation="horizontal"
+                android:padding="5dp">
 
-                   <RadioButton
-                       android:id="@+id/rb_main"
-                       style="@style/bottom_tag_style"
-                       android:drawableTop="@drawable/rb_video_selector"
-                       android:text="微课"
+                <RadioButton
+                    android:id="@+id/rb_main"
+                    style="@style/bottom_tag_style"
+                    android:drawableTop="@drawable/rb_video_selector"
+                    android:text="微课"
 
-                       />
+                    />
 
-                   <RadioButton
-                       android:id="@+id/rb_channel"
-                       style="@style/bottom_tag_style"
-                       android:drawableTop="@drawable/rb_audio_selector"
-                       android:text="离线" />
+                <RadioButton
+                    android:id="@+id/rb_channel"
+                    style="@style/bottom_tag_style"
+                    android:drawableTop="@drawable/rb_audio_selector"
+                    android:text="离线" />
 
 
-                   <RadioButton
-                       android:id="@+id/rb_outline"
-                       style="@style/bottom_tag_style"
-                       android:drawableTop="@drawable/rb_netvideo_selector"
-                       android:text="微听" />
+                <RadioButton
+                    android:id="@+id/rb_outline"
+                    style="@style/bottom_tag_style"
+                    android:drawableTop="@drawable/rb_netvideo_selector"
+                    android:text="微听" />
 
-                   <RadioButton
-                   android:id="@+id/rb_mine"
-                   style="@style/bottom_tag_style"
-                   android:drawableTop="@drawable/rb_netaudio_selector"
-                   android:text="设置" />
-
-
-               </RadioGroup>
+                <RadioButton
+                    android:id="@+id/rb_mine"
+                    style="@style/bottom_tag_style"
+                    android:drawableTop="@drawable/rb_netaudio_selector"
+                    android:text="设置" />
 
 
-           </LinearLayout>
-        </android.support.design.widget.CoordinatorLayout>
+            </RadioGroup>
 
-        <!--menu-->
+
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+
+
+    <!--menu-->
         <RelativeLayout
             android:layout_width="280dp"
             android:layout_height="match_parent"

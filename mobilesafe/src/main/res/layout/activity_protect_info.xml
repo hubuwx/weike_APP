@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="手机防盗"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:background="#00eeee"
+        android:padding="5dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="安全号码"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_protect_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:text="11"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#999999" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:text="防盗保护是否开启"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_protect_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/unlock" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#999999" />
+
+    <TextView
+        android:id="@+id/tv_protect_set"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:text="重新进度设置向导"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:onClick="startSetUp"
+        android:background="@drawable/item_bg_selector"
+        />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#999999" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="功能简介"
+        android:textSize="30dp"
+        android:background="#aaaaaaaa"
+        android:padding="5dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        style="@style/SetUpGuide"
+        android:text="GPS追踪:#loaction#" />
+    <TextView
+        style="@style/SetUpGuide"
+        android:text="播放报警音乐:#alarm#" />
+    <TextView
+        style="@style/SetUpGuide"
+        android:text="远程销毁数据:#wipedate#" />
+    <TextView
+        style="@style/SetUpGuide"
+        android:text="远程锁屏:#lockscreen#" />
+</LinearLayout>

@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_editjob.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_editjob.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\layout_top_title.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\layout_top_title.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_list.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_list.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_editsubmitjob.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_editsubmitjob.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_start.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_start.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\gridview_item_detailmenu.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\gridview_item_detailmenu.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_editnotice.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_editnotice.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\listview_item_common_horizontal.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\listview_item_common_horizontal.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_guide.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_guide.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_register.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\listview_item_common.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\listview_item_common.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_splash.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_chat.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "E:\\clwapp\\classRoomApp\\build\\intermediates\\res\\merged\\debug\\layout\\activity_noticeview.xml",
+        "source": "E:\\clwapp\\classRoomApp\\src\\main\\res\\layout\\activity_noticeview.xml"
+    }
+]

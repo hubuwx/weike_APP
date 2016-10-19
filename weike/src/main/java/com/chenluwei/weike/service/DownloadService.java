@@ -136,8 +136,10 @@ public class DownloadService extends Service {
                 }
                 } catch (IOException e) {
                     e.printStackTrace();
+                }if(conn !=null) {
+
+                    conn.disconnect();
                 }
-                conn.disconnect();
             }
         }
     }
